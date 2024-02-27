@@ -1,0 +1,11 @@
+// cypress/integration/failedLogInJer.spec.js
+
+describe('Invalid Login', () => {
+  it('should display validation error for invalid credentials', () => {
+    cy.visit('https://www.saucedemo.com/');
+    cy.get('#user-name').type('invalid_username');
+    cy.get('#password').type('invalid_password');
+    cy.get('#login-button').click();
+    cy.get('[data-test=error]').should('be.visible');
+  });
+});
